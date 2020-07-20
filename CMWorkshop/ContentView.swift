@@ -10,7 +10,28 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            MenuView()
+            Form {
+                Section(header:
+                Image("ios_training_header")
+                            .resizable()
+                            .aspectRatio(1.15, contentMode: .fill)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .listRowInsets(EdgeInsets())
+                ) {
+                    HStack {
+                        Image("ic_feed")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        Text("JSON RestFul")
+                    }
+                    HStack {
+                        Image("ic_upload")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        Text("Upload Image")
+                    }
+                }
+            }
                 .navigationBarTitle("Codemobiles Workshop", displayMode: .inline)
         }
         
