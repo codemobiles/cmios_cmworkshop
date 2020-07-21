@@ -10,6 +10,7 @@
 		66138FC424C68BA20064C479 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66138FC324C68BA20064C479 /* MenuView.swift */; };
 		66138FCE24C69B9E0064C479 /* PageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66138FCD24C69B9E0064C479 /* PageOneView.swift */; };
 		66138FD024C69BAB0064C479 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66138FCF24C69BAB0064C479 /* PageTwoView.swift */; };
+		66138FDA24C6C48E0064C479 /* YoutubeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66138FD924C6C48E0064C479 /* YoutubeResponse.swift */; };
 		66904CE124C5896800C8CB14 /* CMWorkshopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66904CE024C5896800C8CB14 /* CMWorkshopApp.swift */; };
 		66904CE324C5896800C8CB14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66904CE224C5896800C8CB14 /* ContentView.swift */; };
 		66904CE524C5896A00C8CB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66904CE424C5896A00C8CB14 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		66138FC324C68BA20064C479 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		66138FCD24C69B9E0064C479 /* PageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneView.swift; sourceTree = "<group>"; };
 		66138FCF24C69BAB0064C479 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
+		66138FD924C6C48E0064C479 /* YoutubeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeResponse.swift; sourceTree = "<group>"; };
 		66904CDD24C5896800C8CB14 /* CMWorkshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMWorkshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66904CE024C5896800C8CB14 /* CMWorkshopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMWorkshopApp.swift; sourceTree = "<group>"; };
 		66904CE224C5896800C8CB14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +68,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		66138FD824C6C46C0064C479 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				66138FD924C6C48E0064C479 /* YoutubeResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		66904CD424C5896800C8CB14 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 		66904CDF24C5896800C8CB14 /* CMWorkshop */ = {
 			isa = PBXGroup;
 			children = (
+				66138FD824C6C46C0064C479 /* Models */,
 				66904CE024C5896800C8CB14 /* CMWorkshopApp.swift */,
 				66904CE224C5896800C8CB14 /* ContentView.swift */,
 				66138FC224C68B7B0064C479 /* Views */,
@@ -235,6 +246,7 @@
 				66138FC424C68BA20064C479 /* MenuView.swift in Sources */,
 				66138FCE24C69B9E0064C479 /* PageOneView.swift in Sources */,
 				66138FD024C69BAB0064C479 /* PageTwoView.swift in Sources */,
+				66138FDA24C6C48E0064C479 /* YoutubeResponse.swift in Sources */,
 				66904CE124C5896800C8CB14 /* CMWorkshopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
