@@ -18,6 +18,7 @@ struct MenuList: Identifiable {
 }
 
 struct MenuView: View {
+    let items: [MenuList] = [.pageOne, .pageTwo]
     var body: some View {
         Form {
             Section(header:
@@ -27,17 +28,15 @@ struct MenuView: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .listRowInsets(EdgeInsets())
             ) {
-                HStack {
-                    Image("ic_feed")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                    Text("JSON RestFul")
-                }
-                HStack {
-                    Image("ic_upload")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                    Text("Upload Image")
+                ForEach(items) { item in
+                    NavigationLink(destination: item.page) {
+                        HStack {
+                            Image(item.icon)
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                            Text(item.title)
+                        }
+                    }
                 }
             }
         }
