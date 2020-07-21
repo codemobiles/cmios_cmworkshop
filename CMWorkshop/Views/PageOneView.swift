@@ -7,58 +7,29 @@
 
 import SwiftUI
 import Alamofire
+import struct Kingfisher.KFImage
 
 struct PageOneView: View {
     @State private var youtubeDataArray: [Youtube] = []
     var body: some View {
         List {
-            VStack(alignment: .leading) {
-                HStack {
-                    Image("ic_face_id")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Title")
-                        Text("Subtitle")
+            ForEach(self.youtubeDataArray, id: \.id) { item in
+                VStack(alignment: .leading) {
+                    HStack {
+                        KFImage(URL(string: item.avatarImage))
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        
+                        VStack(alignment: .leading) {
+                            Text(item.title)
+                            Text(item.subtitle)
+                        }
                     }
-                }
-                Image("ios_training_header")
-                    .resizable()
-                    .aspectRatio(1.7, contentMode: .fill)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-            }
-            VStack(alignment: .leading) {
-                HStack {
-                    Image("ic_face_id")
+                    KFImage(URL(string: item.youtubeImage))
                         .resizable()
-                        .frame(width: 50, height: 50)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Title")
-                        Text("Subtitle")
-                    }
+                        .aspectRatio(1.7, contentMode: .fill)
+                        .frame(minWidth: 0, maxWidth: .infinity)
                 }
-                Image("ios_training_header")
-                    .resizable()
-                    .aspectRatio(1.7, contentMode: .fill)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-            }
-            VStack(alignment: .leading) {
-                HStack {
-                    Image("ic_face_id")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Title")
-                        Text("Subtitle")
-                    }
-                }
-                Image("ios_training_header")
-                    .resizable()
-                    .aspectRatio(1.7, contentMode: .fill)
-                    .frame(minWidth: 0, maxWidth: .infinity)
             }
         }
         .onAppear {
