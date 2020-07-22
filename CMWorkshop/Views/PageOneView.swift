@@ -8,13 +8,21 @@
 import SwiftUI
 import Alamofire
 import struct Kingfisher.KFImage
+import SwiftUIRefresh
 
 struct PageOneView: View {
     @State private var youtubeDataArray: [Youtube] = []
+    @State private var isRefreshing: Bool = false
+    
     var body: some View {
         List {
             ForEach(self.youtubeDataArray, id: \.id) { item in
                 RowListView(item: item)
+            }
+        }
+        .pullToRefresh(isShowing: $isRefreshing) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.feedData()
             }
         }
         .onAppear {
@@ -23,6 +31,7 @@ struct PageOneView: View {
     }
     
     func feedData() {
+        self.isRefreshing = true
         let params = ["username": "admin", "password": "password", "type": "foods"]
         let url = "http://codemobiles.com/adhoc/youtubes/index_new.php"
         AF.request(url, method: .post, parameters: params).responseJSON { (response) in
@@ -33,6 +42,10 @@ struct PageOneView: View {
                     let result = try JSONDecoder().decode(YoutubeResponse.self, from: response.data!)
                     self.youtubeDataArray.removeAll()
                     self.youtubeDataArray = result.youtubes
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.isRefreshing = false
+                    }
                 } catch {
                     print(error.localizedDescription)
                 }
