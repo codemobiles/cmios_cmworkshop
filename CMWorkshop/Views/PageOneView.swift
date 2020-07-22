@@ -14,22 +14,7 @@ struct PageOneView: View {
     var body: some View {
         List {
             ForEach(self.youtubeDataArray, id: \.id) { item in
-                VStack(alignment: .leading) {
-                    HStack {
-                        KFImage(URL(string: item.avatarImage))
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                        
-                        VStack(alignment: .leading) {
-                            Text(item.title)
-                            Text(item.subtitle)
-                        }
-                    }
-                    KFImage(URL(string: item.youtubeImage))
-                        .resizable()
-                        .aspectRatio(1.7, contentMode: .fill)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                }
+                RowListView(item: item)
             }
         }
         .onAppear {
@@ -61,5 +46,52 @@ struct PageOneView: View {
 struct PageOneView_Previews: PreviewProvider {
     static var previews: some View {
         PageOneView()
+    }
+}
+
+struct RowListView: View {
+    let item: Youtube
+    
+    var isiPhone: Bool {
+        return UIDevice.current.userInterfaceIdiom == .phone
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                HStack {
+                    KFImage(URL(string: item.avatarImage))
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.gray, lineWidth: 0.5))
+                    
+                    VStack(alignment: .leading) {
+                        Text(item.title)
+                            .lineLimit(1)
+                        Text(item.subtitle)
+                            .foregroundColor(.gray)
+                            .lineLimit(2)
+                    }
+                }
+                .padding(.top, 8)
+                .padding(.horizontal, 8)
+                KFImage(URL(string: item.youtubeImage))
+                    .resizable()
+                    .aspectRatio(1.7, contentMode: .fill)
+                    .clipped()
+                    .frame(width: geometry.size.width)
+            }
+        }
+        .aspectRatio(self.isiPhone ? 1.2 : 1.5, contentMode: .fit)
+        .listRowInsets(EdgeInsets())
+        .padding(.bottom, 20)
+        .onTapGesture {
+            var youtube = URL(string: "youtube://\(item.id)")
+            if !UIApplication.shared.canOpenURL(youtube!) {
+                youtube = URL(string: "https://www.youtube.com/watch?v=\(item.id)")
+            }
+            UIApplication.shared.open(youtube!)
+        }
     }
 }
