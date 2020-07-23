@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PageTwoView: View {
+    @State private var isShowActionSheet: Bool = false
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -19,7 +20,7 @@ struct PageTwoView: View {
                     .padding(.bottom, 35)
                 HStack(spacing: 60) {
                     Button(action: {
-                        
+                        self.isShowActionSheet = true
                     }) {
                         ImageButtonView(image: "camera_normal", geometry: geometry)
                     }
@@ -32,6 +33,17 @@ struct PageTwoView: View {
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
+        }
+        .actionSheet(isPresented: self.$isShowActionSheet) {
+            ActionSheet(title: Text("Please Select"), message: Text("Source of Image"), buttons: [
+                .default(Text("Camera"), action: {
+                    print("Open Camera")
+                }),
+                .default(Text("Gallery"), action: {
+                    print("Open Gallery")
+                }),
+                .destructive(Text("Dismiss"))
+            ])
         }
     }
 }
@@ -46,7 +58,7 @@ struct ImageButtonView: View {
     let image: String
     let geometry: GeometryProxy
     var body: some View {
-        Image("camera_normal")
+        Image(image)
             .renderingMode(.original)
             .resizable()
             .aspectRatio(contentMode: .fit)
