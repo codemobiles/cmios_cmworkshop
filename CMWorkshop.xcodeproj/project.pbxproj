@@ -12,6 +12,7 @@
 		66138FD024C69BAB0064C479 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66138FCF24C69BAB0064C479 /* PageTwoView.swift */; };
 		66138FDA24C6C48E0064C479 /* YoutubeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66138FD924C6C48E0064C479 /* YoutubeResponse.swift */; };
 		667AE35324CA95FB00D034C6 /* ImagePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667AE35224CA95FB00D034C6 /* ImagePickerVC.swift */; };
+		667AE35F24CAC46600D034C6 /* NodeJS in Resources */ = {isa = PBXBuildFile; fileRef = 667AE35E24CAC46600D034C6 /* NodeJS */; };
 		66904CE124C5896800C8CB14 /* CMWorkshopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66904CE024C5896800C8CB14 /* CMWorkshopApp.swift */; };
 		66904CE324C5896800C8CB14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66904CE224C5896800C8CB14 /* ContentView.swift */; };
 		66904CE524C5896A00C8CB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66904CE424C5896A00C8CB14 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		66138FCF24C69BAB0064C479 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
 		66138FD924C6C48E0064C479 /* YoutubeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeResponse.swift; sourceTree = "<group>"; };
 		667AE35224CA95FB00D034C6 /* ImagePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerVC.swift; sourceTree = "<group>"; };
+		667AE35E24CAC46600D034C6 /* NodeJS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NodeJS; sourceTree = "<group>"; };
 		66904CDD24C5896800C8CB14 /* CMWorkshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMWorkshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66904CE024C5896800C8CB14 /* CMWorkshopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMWorkshopApp.swift; sourceTree = "<group>"; };
 		66904CE224C5896800C8CB14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				66904CFD24C5A3BE00C8CB14 /* Readme.txt */,
 				66904CEF24C589ED00C8CB14 /* Podfile */,
+				667AE35E24CAC46600D034C6 /* NodeJS */,
 				66904CDF24C5896800C8CB14 /* CMWorkshop */,
 				66904CDE24C5896800C8CB14 /* Products */,
 				97446AC8771A0AE20CDF75B5 /* Pods */,
@@ -197,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				667AE35F24CAC46600D034C6 /* NodeJS in Resources */,
 				66904CF024C589ED00C8CB14 /* Podfile in Resources */,
 				66904CE824C5896A00C8CB14 /* Preview Assets.xcassets in Resources */,
 				66904CFE24C5A3BE00C8CB14 /* Readme.txt in Resources */,
