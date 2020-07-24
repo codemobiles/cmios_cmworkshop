@@ -18,30 +18,35 @@ struct PageTwoView: View {
     @State private var inputData: Data?
     @State private var showingAlert: Bool = false
     @State private var alertMessage: String = ""
+    @State private var showingLoading: Bool = false
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                image?
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
-                    .clipShape(Circle())
-                    .padding(.bottom, 35)
-                HStack(spacing: 60) {
-                    Button(action: {
-                        self.isShowActionSheet = true
-                    }) {
-                        ImageButtonView(image: "camera_normal", geometry: geometry)
-                    }
-                    
-                    Button(action: {
-                        self.uploadFile(data: data!)
-                    }) {
-                        ImageButtonView(image: "share_normal", geometry: geometry)
+        LoadingView(isShowing: $showingLoading) {
+            GeometryReader { geometry in
+                VStack {
+                    image?
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
+                        .clipShape(Circle())
+                        .padding(.bottom, 35)
+                    HStack(spacing: 60) {
+                        Button(action: {
+                            self.isShowActionSheet = true
+                        }) {
+                            ImageButtonView(image: "camera_normal", geometry: geometry)
+                        }
+                        
+                        Button(action: {
+                            if image != Image("upload_image") {
+                                self.uploadFile(data: data!)
+                            }
+                        }) {
+                            ImageButtonView(image: "share_normal", geometry: geometry)
+                        }
                     }
                 }
+                .frame(width: geometry.size.width, height: geometry.size.height)
             }
-            .frame(width: geometry.size.width, height: geometry.size.height)
         }
         .actionSheet(isPresented: self.$isShowActionSheet) {
             ActionSheet(title: Text("Please Select"), message: Text("Source of Image"), buttons: [
@@ -72,6 +77,7 @@ struct PageTwoView: View {
     }
     
     func uploadFile(data: Data) {
+        self.showingLoading = true
         let url = "http://192.168.0.131:3000/uploads"
         let params = ["username": "GOLF", "password": "1234"]
         AF.upload(multipartFormData: { MultipartFormData in
@@ -83,6 +89,8 @@ struct PageTwoView: View {
             switch response.result {
             case let .success(value):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.showingLoading = false
+                    image = Image("upload_image")
                     self.showingAlert = true
                     self.alertMessage = value
                 }
@@ -90,6 +98,7 @@ struct PageTwoView: View {
                 break
             case let .failure(err):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.showingLoading = false
                     self.showingAlert = true
                     self.alertMessage = err.errorDescription ?? "Undefined error"
                 }
