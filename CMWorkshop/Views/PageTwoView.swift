@@ -12,6 +12,9 @@ struct PageTwoView: View {
     @State private var image: Image? = Image("upload_image")
     @State private var data: Data?
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var showingImagePicker: Bool = false
+    @State private var inputImage: UIImage?
+    @State private var inputData: Data?
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -41,13 +44,25 @@ struct PageTwoView: View {
             ActionSheet(title: Text("Please Select"), message: Text("Source of Image"), buttons: [
                 .default(Text("Camera"), action: {
                     print("Open Camera")
+                    self.showingImagePicker = true
                 }),
                 .default(Text("Gallery"), action: {
                     print("Open Gallery")
+                    self.showingImagePicker = true
                 }),
                 .destructive(Text("Dismiss"))
             ])
         }
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            ImagePickerVC(image: $inputImage, data: $inputData)
+        }
+    }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+        guard let inputData = inputData else { return }
+        data = inputData
     }
 }
 
