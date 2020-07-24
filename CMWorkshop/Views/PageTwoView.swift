@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct PageTwoView: View {
     @State private var isShowActionSheet: Bool = false
@@ -15,6 +16,8 @@ struct PageTwoView: View {
     @State private var showingImagePicker: Bool = false
     @State private var inputImage: UIImage?
     @State private var inputData: Data?
+    @State private var showingAlert: Bool = false
+    @State private var alertMessage: String = ""
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -32,7 +35,7 @@ struct PageTwoView: View {
                     }
                     
                     Button(action: {
-                        
+                        self.uploadFile(data: data!)
                     }) {
                         ImageButtonView(image: "share_normal", geometry: geometry)
                     }
@@ -43,18 +46,21 @@ struct PageTwoView: View {
         .actionSheet(isPresented: self.$isShowActionSheet) {
             ActionSheet(title: Text("Please Select"), message: Text("Source of Image"), buttons: [
                 .default(Text("Camera"), action: {
-                    print("Open Camera")
+                    self.sourceType = .camera
                     self.showingImagePicker = true
                 }),
                 .default(Text("Gallery"), action: {
-                    print("Open Gallery")
+                    self.sourceType = .photoLibrary
                     self.showingImagePicker = true
                 }),
                 .destructive(Text("Dismiss"))
             ])
         }
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-            ImagePickerVC(image: $inputImage, data: $inputData)
+            ImagePickerVC(image: $inputImage, data: $inputData, sourceType: sourceType)
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Response"), message: Text(alertMessage), dismissButton: .default(Text("Dismiss")))
         }
     }
     
@@ -63,6 +69,34 @@ struct PageTwoView: View {
         image = Image(uiImage: inputImage)
         guard let inputData = inputData else { return }
         data = inputData
+    }
+    
+    func uploadFile(data: Data) {
+        let url = "http://192.168.0.131:3000/uploads"
+        let params = ["username": "GOLF", "password": "1234"]
+        AF.upload(multipartFormData: { MultipartFormData in
+            MultipartFormData.append(data, withName: "userfile", fileName: "product.jpg", mimeType: "image/jpg")
+            for (key, value) in params {
+                MultipartFormData.append(value.data(using: .utf8)!, withName: key)
+            }
+        }, to: url, method: .post).responseString { response in
+            switch response.result {
+            case let .success(value):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.showingAlert = true
+                    self.alertMessage = value
+                }
+//                print(value)
+                break
+            case let .failure(err):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.showingAlert = true
+                    self.alertMessage = err.errorDescription ?? "Undefined error"
+                }
+//                print(err.errorDescription ?? "Undefined error")
+            }
+        }
+        
     }
 }
 
