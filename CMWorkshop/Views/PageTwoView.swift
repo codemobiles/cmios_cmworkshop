@@ -9,10 +9,13 @@ import SwiftUI
 
 struct PageTwoView: View {
     @State private var isShowActionSheet: Bool = false
+    @State private var image: Image? = Image("upload_image")
+    @State private var data: Data?
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Image("upload_image")
+                image?
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
