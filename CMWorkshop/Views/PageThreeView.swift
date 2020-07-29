@@ -17,6 +17,7 @@ struct PageThreeView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .frame(width: 200, alignment: .center)
+            WebView(request: URLRequest(url: URL(string: "http://www.codemobiles.com/biz/training_consult.php")!))
         }
         .onChange(of: selectedSegment) { selected in
             if selected == 0 {

@@ -22,6 +22,8 @@
 		66A76DE824CAF3F80098EED3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A76DE724CAF3F80098EED3 /* ActivityIndicator.swift */; };
 		66A76DEA24CAF42E0098EED3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A76DE924CAF42E0098EED3 /* LoadingView.swift */; };
 		66D17BBD24D158B300B1C993 /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D17BBC24D158B300B1C993 /* PageThreeView.swift */; };
+		66D17BC424D1603500B1C993 /* product.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 66D17BC324D1603500B1C993 /* product.pdf */; };
+		66D17BC624D160BC00B1C993 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D17BC524D160BC00B1C993 /* WebView.swift */; };
 		CE8EA09F5DED1A04AD0B67D2 /* Pods_CMWorkshop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD6F44037C9F51B04544A33 /* Pods_CMWorkshop.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		66A76DE724CAF3F80098EED3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		66A76DE924CAF42E0098EED3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		66D17BBC24D158B300B1C993 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
+		66D17BC324D1603500B1C993 /* product.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = product.pdf; sourceTree = "<group>"; };
+		66D17BC524D160BC00B1C993 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7529B2E449D7878C4350408D /* Pods-CMWorkshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMWorkshop.release.xcconfig"; path = "Target Support Files/Pods-CMWorkshop/Pods-CMWorkshop.release.xcconfig"; sourceTree = "<group>"; };
 		7FCCF62FAE1A435EA431F92B /* Pods-CMWorkshop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMWorkshop.debug.xcconfig"; path = "Target Support Files/Pods-CMWorkshop/Pods-CMWorkshop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +124,7 @@
 		66904CDF24C5896800C8CB14 /* CMWorkshop */ = {
 			isa = PBXGroup;
 			children = (
+				66D17BC224D1601C00B1C993 /* Resources */,
 				66904CE024C5896800C8CB14 /* CMWorkshopApp.swift */,
 				66904CE224C5896800C8CB14 /* ContentView.swift */,
 				66138FC224C68B7B0064C479 /* Views */,
@@ -145,8 +150,17 @@
 			isa = PBXGroup;
 			children = (
 				66A76DE724CAF3F80098EED3 /* ActivityIndicator.swift */,
+				66D17BC524D160BC00B1C993 /* WebView.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		66D17BC224D1601C00B1C993 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66D17BC324D1603500B1C993 /* product.pdf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		97446AC8771A0AE20CDF75B5 /* Pods */ = {
@@ -221,6 +235,7 @@
 				66904CF024C589ED00C8CB14 /* Podfile in Resources */,
 				66904CE824C5896A00C8CB14 /* Preview Assets.xcassets in Resources */,
 				66904CFE24C5A3BE00C8CB14 /* Readme.txt in Resources */,
+				66D17BC424D1603500B1C993 /* product.pdf in Resources */,
 				66904CE524C5896A00C8CB14 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +299,7 @@
 				66904CE124C5896800C8CB14 /* CMWorkshopApp.swift in Sources */,
 				667AE35324CA95FB00D034C6 /* ImagePickerVC.swift in Sources */,
 				66A76DEA24CAF42E0098EED3 /* LoadingView.swift in Sources */,
+				66D17BC624D160BC00B1C993 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
