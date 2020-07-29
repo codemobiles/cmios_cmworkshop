@@ -17,23 +17,20 @@ struct PageThreeView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .frame(width: 200, alignment: .center)
-            WebView(request: URLRequest(url: URL(string: "http://www.codemobiles.com/biz/training_consult.php")!))
-        }
-        .onChange(of: selectedSegment) { selected in
-            if selected == 0 {
-                self.openWeb()
-            }else {
-                self.openPdf()
-            }
+            .padding(.top, 5)
+            WebView(request: selectedSegment == 0 ? self.openWeb() : self.openPdf())
         }
     }
     
-    func openWeb() {
-        print("Open Web")
+    func openWeb() -> URLRequest {
+        let url = URL(string: "http://www.codemobiles.com/biz/training_consult.php")
+        return URLRequest(url: url!)
     }
     
-    func openPdf() {
-        print("Open PDF")
+    func openPdf() -> URLRequest {
+        let pdfPath = Bundle.main.path(forResource: "product.pdf", ofType: nil)
+        let url = URL(fileURLWithPath: pdfPath!)
+        return URLRequest(url: url)
     }
 }
 
