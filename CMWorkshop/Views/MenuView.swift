@@ -12,13 +12,16 @@ struct MenuList: Identifiable {
     let icon, title: String
     let page: AnyView
     var items: [MenuList]?
-    
+}
+
+extension MenuList {
     static let pageOne = MenuList(icon: "ic_feed", title: "JSON RESTFul", page: AnyView(PageOneView()))
     static let pageTwo = MenuList(icon: "ic_upload", title: "Upload Image", page: AnyView(PageTwoView()))
+    static let pageThree = MenuList(icon: "ic_webkit", title: "WebKit Integration", page: AnyView(PageThreeView()))
 }
 
 struct MenuView: View {
-    let items: [MenuList] = [.pageOne, .pageTwo]
+    let items: [MenuList] = [.pageOne, .pageTwo, .pageThree]
     var body: some View {
         Form {
             Section(header:
