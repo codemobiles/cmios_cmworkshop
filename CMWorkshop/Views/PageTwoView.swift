@@ -48,6 +48,7 @@ struct PageTwoView: View {
                 .frame(width: geometry.size.width, height: geometry.size.height)
             }
         }
+        .navigationBarTitle("Upload Image", displayMode: .inline)
         .actionSheet(isPresented: self.$isShowActionSheet) {
             ActionSheet(title: Text("Please Select"), message: Text("Source of Image"), buttons: [
                 .default(Text("Camera"), action: {

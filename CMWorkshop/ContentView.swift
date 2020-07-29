@@ -12,6 +12,9 @@ struct ContentView: View {
         NavigationView {
             MenuView()
                 .navigationBarTitle("Codemobiles Workshop", displayMode: .inline)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                PageThreeView()
+            }
         }
     }
 }

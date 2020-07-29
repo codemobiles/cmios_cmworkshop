@@ -9,6 +9,18 @@ import SwiftUI
 
 struct PageThreeView: View {
     @State private var selectedSegment: Int = 0
+    
+    var openWeb: URLRequest {
+        let url = URL(string: "http://www.codemobiles.com/biz/training_consult.php")
+        return URLRequest(url: url!)
+    }
+    
+    var openPdf: URLRequest {
+        let pdfPath = Bundle.main.path(forResource: "product.pdf", ofType: nil)
+        let url = URL(fileURLWithPath: pdfPath!)
+        return URLRequest(url: url)
+    }
+    
     var body: some View {
         VStack {
             Picker("Type", selection: self.$selectedSegment) {
@@ -18,19 +30,9 @@ struct PageThreeView: View {
             .pickerStyle(SegmentedPickerStyle())
             .frame(width: 200, alignment: .center)
             .padding(.top, 5)
-            WebView(request: selectedSegment == 0 ? self.openWeb() : self.openPdf())
+            WebView(request: selectedSegment == 0 ? self.openWeb : self.openPdf)
         }
-    }
-    
-    func openWeb() -> URLRequest {
-        let url = URL(string: "http://www.codemobiles.com/biz/training_consult.php")
-        return URLRequest(url: url!)
-    }
-    
-    func openPdf() -> URLRequest {
-        let pdfPath = Bundle.main.path(forResource: "product.pdf", ofType: nil)
-        let url = URL(fileURLWithPath: pdfPath!)
-        return URLRequest(url: url)
+        .navigationBarTitle("WebKit Integration", displayMode: .inline)
     }
 }
 
