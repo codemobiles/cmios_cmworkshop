@@ -33,6 +33,9 @@ struct PageOneView: View {
     }
     
     func feedData() {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            self.isRefreshing = true
+        }
         let params = ["username": "admin", "password": "password", "type": "foods"]
         let url = "http://codemobiles.com/adhoc/youtubes/index_new.php"
         AF.request(url, method: .post, parameters: params).responseJSON { (response) in

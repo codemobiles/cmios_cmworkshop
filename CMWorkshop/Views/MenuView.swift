@@ -23,7 +23,7 @@ extension MenuList {
 struct MenuView: View {
     let items: [MenuList] = [.pageOne, .pageTwo, .pageThree]
     var body: some View {
-        Form {
+        List {
             Section(header:
                         Image("ios_training_header")
                         .resizable()
